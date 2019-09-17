@@ -1,0 +1,256 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    margin: 0px;
+}
+
+
+/*  
+* * * * * * * *
+    NAV BAR
+* * * * * * * *
+*/
+
+header {
+    height: 60px;
+}
+
+nav {
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 20px 5px 10px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+}
+
+nav img {
+    height: 30px;
+}
+
+nav * {
+    margin: 0px 10px;
+    color: rgb(80, 80, 80);
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: rgb(140, 140, 140);
+}
+
+.navItem {
+    background-color: lightgray;
+    border-radius: 30px;
+    margin: 0;
+}
+
+.navItem:hover {
+    background-color: blue;
+}
+
+
+.verticalBar {
+    border-left: 2px solid lightgray;
+    margin: 0px 10px;
+    height: 25px;
+}
+
+.searchBar {
+    padding: 0px 10px;
+    height: 35px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* width: 500px; */
+    flex-grow: 1;
+}
+
+.searchBar img {
+    margin: 0px;
+    height: 25px;
+}
+
+.profilePhoto {
+    border-radius: 30px;
+}
+
+input {
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+/*  
+* * * * * * * * * *
+    MAIN CONTENT
+* * * * * * * * * *
+*/
+
+main {
+    padding-top: 35px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.blockWrapper {
+    column-count: 4;
+    column-gap: 1em;
+}
+
+/*  This pseudo-accomplished it with flexbox. No masonry effect though.
+.blockWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+} */
+
+.block {
+    display: inline-block;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.block img {
+    width: 100%;
+    height: auto;
+    transition: box-shadow 0.3s;
+    animation: fadeIn 2.5s ease;
+} 
+
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.block img:hover {
+    /* box-shadow: h-offset v-offset blur spread color. Can chain with commas.  */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}
+
+p {
+    margin: 5px 0 20px 6px;
+    animation: fadeIn 3s ease;
+}
+
+
+/*  
+* * * * * * * 
+    MOBILE
+* * * * * * * 
+*/
+
+.mobileFooterNav {
+    display: none;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    opacity: .95;
+    /* border-top: 1px solid darkgray; */
+    padding: 3px 0;
+}
+
+.mobileFooterSection {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.mobileFooterNav img {
+    height: 30px;
+    width: auto;
+    display: block;
+    margin: 0;
+    padding: 3px 0 0 0;
+    border-radius: 50px;
+}
+
+.mobileFooterNav p {
+    display: inline-block;
+    margin: 0;
+    padding: 3px 0 0 0;
+    font-size: .9rem;
+    color: rgb(80, 80, 80)
+}
+
+.mobileFooterNav svg {
+    height: 27px;
+    width: 27px;
+    fill: rgb(120, 120, 120)
+}
+
+
+/*  
+* * * * * * * * * * *
+    MEDIA QUERIES
+* * * * * * * * * * *
+*/
+
+/* Interesting note: this has to be low in the file to override the base setting. Cascading and all that. */
+@media only screen and (max-width: 1000px) {
+    .blockWrapper {
+        column-count: 3;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .blockWrapper {
+        column-count: 2;
+    }
+    .navRemoveMobile {
+        display: none;
+    }
+    .mobileFooterNav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    main {
+        width: 95%;
+    }
+    .blockWrapper {
+        column-count: 1;
+    }
+    .mobileFooterSection {
+        width: 24%;
+    }
+    .mobileFooterNav p {
+        font-size: 0.7rem;
+    }
+}
